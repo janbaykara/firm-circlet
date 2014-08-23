@@ -1,0 +1,217 @@
+/* ---------- ==========================================
+    LESS mixins + utility classes
+*/
+.selection-style(@background,@color) {
+  ::-moz-selection { color: @color;  background: @background; }
+  ::selection      { color: @color;  background: @background; } 
+}
+
+.margin-auto() {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@golden-ratio: 1.61803398875;
+.golden-ratio(@this: major,@length: 100%) when (@this = major) {
+  @gr-length: @length / @golden-ratio;
+}
+.golden-ratio(@this: major,@length: 100%) when (@this = minor) {
+  @gr-length: @length - (@length / @golden-ratio);
+}
+
+.img-responsive(@display: block) {
+  display: @display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+.padding-h(@ab) {  .padding-h(@ab, @ab); }
+.padding-h(@a,@b) {  padding-top: @a;   padding-bottom: @b; }
+
+.padding-w(@ab) {  .padding-w(@ab, @ab); }
+.padding-w(@a,@b) {  padding-left: @a;   padding-right: @b; }
+
+
+.margin-h(@ab) {  .margin-h(@ab, @ab); }
+.margin-h(@a,@b) {  margin-top: @a;   margin-bottom: @b; }
+
+.margin-w(@ab) {  .margin-w(@ab, @ab); }
+.margin-w(@a,@b) {  margin-left: @a;   margin-right: @b; }
+
+
+.prevent-text-breakouts() {
+  -ms-word-break: break-all;
+      word-break: break-all;
+      word-break: break-word;
+  -webkit-hyphens: auto;
+     -moz-hyphens: auto;
+          hyphens: auto;
+}
+.background-cover(@url, @color:black, @posnx:50%, @posny:50%, @attachment:fixed) {
+    background-color: @color;
+    background-image: url(@url);
+    background-position-x: @posnx;
+    background-position-y: @posny;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: @attachment;
+    background-origin: initial;
+    background-clip: initial;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.background-clip(@argument: padding-box) {
+    -moz-background-clip: @argument;
+    -webkit-background-clip: @argument;
+    background-clip: @argument;
+}
+
+.border-radius(@radius: 2px) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.border-radius-multi(@topright: 0, @bottomright: 0, @bottomleft: 0, @topleft: 0) {
+    -webkit-border-top-right-radius: @topright;
+    -webkit-border-bottom-right-radius: @bottomright;
+    -webkit-border-bottom-left-radius: @bottomleft;
+    -webkit-border-top-left-radius: @topleft;
+    -moz-border-radius-topright: @topright;
+    -moz-border-radius-bottomright: @bottomright;
+    -moz-border-radius-bottomleft: @bottomleft;
+    -moz-border-radius-topleft: @topleft;
+    border-top-right-radius: @topright;
+    border-bottom-right-radius: @bottomright;
+    border-bottom-left-radius: @bottomleft;
+    border-top-left-radius: @topleft;
+    .background-clip(padding-box);
+}
+
+.opacity(@opacity: 0.5) {
+    -moz-opacity: @opacity;
+    -khtml-opacity: @opacity;
+    -webkit-opacity: @opacity;
+    opacity: @opacity;
+    @opperc: @opacity * 100;
+    -ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(opacity=@{opperc})";
+    filter: ~"alpha(opacity=@{opperc})";
+}
+
+.transition-duration(@duration: 0.2s) {
+    -moz-transition-duration: @duration;
+    -webkit-transition-duration: @duration;
+    -o-transition-duration: @duration;
+    transition-duration: @duration;
+}
+
+.transform(...) {
+    -webkit-transform: @arguments;
+    -moz-transform: @arguments;
+    -o-transform: @arguments;
+    -ms-transform: @arguments;
+    transform: @arguments;
+}
+
+.rotation(@deg:5deg){
+    .transform(rotate(@deg));
+}
+
+.scale(@ratio:1.5){
+    .transform(scale(@ratio));
+}
+
+.transition(@duration:0.2s, @target:all, @ease:ease-out) {
+    -webkit-transition: @target @duration @ease;
+    -moz-transition: @target @duration @ease;
+    -o-transition: @target @duration @ease;
+    transition: @target @duration @ease;
+}
+
+.no-transition { .transition(0); }
+
+.inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
+    -webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+    -moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+    box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+}
+
+.box-shadow(@arguments) {
+    -webkit-box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+    box-shadow: @arguments;
+}
+
+.box-sizing(@sizing: border-box) {
+    -ms-box-sizing: @sizing;
+    -moz-box-sizing: @sizing;
+    -webkit-box-sizing: @sizing;
+    box-sizing: @sizing;
+}
+
+.user-select(@argument: none) {
+    -webkit-user-select: @argument;
+    -moz-user-select: @argument;
+    -ms-user-select: @argument;
+    -o-user-select: none;
+    user-select: @argument;
+}
+
+.columns(@colwidth: 250px, @colcount: 0, @colgap: 50px, @columnRuleColor: #EEE, @columnRuleStyle: solid, @columnRuleWidth: 1px) {
+    -moz-column-width: @colwidth;
+    -moz-column-count: @colcount;
+    -moz-column-gap: @colgap;
+    -moz-column-rule-color: @columnRuleColor;
+    -moz-column-rule-style: @columnRuleStyle;
+    -moz-column-rule-width: @columnRuleWidth;
+    -webkit-column-width: @colwidth;
+    -webkit-column-count: @colcount;
+    -webkit-column-gap: @colgap;
+    -webkit-column-rule-color: @columnRuleColor;
+    -webkit-column-rule-style: @columnRuleStyle;
+    -webkit-column-rule-width: @columnRuleWidth;
+    column-width: @colwidth;
+    column-count: @colcount;
+    column-gap: @colgap;
+    column-rule-color: @columnRuleColor;
+    column-rule-style: @columnRuleStyle;
+    column-rule-width: @columnRuleWidth;
+}
+
+.translate(@x:0, @y:0) {
+    .transform(translate(@x, @y));
+}
+
+.clearfix {
+    *zoom: 1;
+
+    &:before, &:after {
+        content: " ";
+        display: table;
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+
+.no-webkit-form() {
+    input, select {
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    color: grey;
+    font: inherit;
+    display: inline;
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+      
+    :focus {
+      outline: none !important;
+    }
+  }
+}

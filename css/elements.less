@@ -1,0 +1,63 @@
+/* ---------- ==========================================
+  PAGE ELEMENTS - Colour, embellishment, styling  */
+
+// Colour scheme      
+@darkgrey:      #363F4D;
+@mediumgrey:    #727780; 
+@lightgrey:     #9FA6B3;
+@offwhite:      #BDCCD4; 
+@brandred:      #FF3D33;    
+@brandblue:     #006080;  
+@ctxt:          @mediumgrey;     
+@cbg:           #fff;     
+
+// For calcs
+@cspot:         @brandred;
+@cprime:        @brandblue;
+
+// For type
+@clink:         @brandred;
+@clinkhover:    lighten(@clink,10%);
+@clinkactive:   lighten(@clink,20%);
+@clinkvisited:  @clink;
+
+/* ================== GLOBAL MODULAR */
+
+.selection-style(@cprime, @cbg);
+
+* {
+  .transition(0.25s);
+  color: @ctxt;
+}
+
+a {
+  color: @clink;
+  text-decoration: none;
+  font-weight: 600;
+  
+  &:hover     { color: @clinkhover;   border-bottom: 2px solid @clink; }
+  &:active    { color: @clinkactive;  border-bottom: 2px solid @clink; }
+  &:visited   { color: @clinkvisited; }
+}
+
+/* =================== GLOBAL elements */
+
+.copyright {
+  color: #BBB;
+  font-size: 18px;
+}
+
+#document-foot {
+  img { width: 150px; }
+  text-align: center;
+  
+  &:before {
+    content: " ";
+    padding-top: 30px;
+    border-top: 2px solid #EEE;
+    display: block;
+  }
+}
+
+/* =================== Page specifics */
+
