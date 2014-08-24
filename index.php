@@ -1,8 +1,15 @@
-<?  require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/php/config.php"); ?>
-<?=$SCAFFOLD_HEAD ?>
-<div class="page-wrap">
+<?php
+    require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/php/config.php");
 
-  Test.
-  
-</div>
-<?=$SCAFFOLD_FOOT ?>
+    // Init page
+    $view = new view("Political Recruits");
+    $app->setView($view);
+
+    // Page contents
+    $content = print_r($app);
+
+    // Render page
+    $view->setContent($content);
+    $app->render();
+    
+?>

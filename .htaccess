@@ -74,12 +74,12 @@ Options -MultiViews
 # Customize what Apache returns to the client in case of an error.
 # http://httpd.apache.org/docs/current/mod/core.html#errordocument
 
-ErrorDocument 400 /QuidProQuo/dev/errors.php
-ErrorDocument 401 /QuidProQuo/dev/errors.php
-ErrorDocument 402 /QuidProQuo/dev/errors.php
-ErrorDocument 403 /QuidProQuo/dev/errors.php
-ErrorDocument 404 /QuidProQuo/dev/errors.php
-ErrorDocument 500 /QuidProQuo/dev/errors.php
+ErrorDocument 400 /politicalrecruits/dev/errors.php
+ErrorDocument 401 /politicalrecruits/dev/errors.php
+ErrorDocument 402 /politicalrecruits/dev/errors.php
+ErrorDocument 403 /politicalrecruits/dev/errors.php
+ErrorDocument 404 /politicalrecruits/dev/errors.php
+ErrorDocument 500 /politicalrecruits/dev/errors.php
 
 
 # ##############################################################################
@@ -219,6 +219,17 @@ AddDefaultCharset utf-8
   # Options +SymLinksIfOwnerMatch
     RewriteEngine On
   # RewriteBase /
+  
+  # Unless directory, remove trailing slash
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([^/]+)/$ http://example.com/folder/$1 [R=301,L]
+
+  # Redirect external .php requests to extensionless url
+  RewriteCond %{THE_REQUEST} ^(.+)\.php([#?][^\ ]*)?\ HTTP/
+  RewriteRule ^(.+)\.php$ http://example.com/folder/$1 [R=301,L]
+
+  # Resolve .php file for extensionless php urls
+  RewriteRule ^([^/.]+)$ $1.php [L]
 </IfModule>
 
 # ------------------------------------------------------------------------------

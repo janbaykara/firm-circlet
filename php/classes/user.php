@@ -1,29 +1,6 @@
 <?php
-/**
- * @author     David Hopson <http://frontierlabs.co.uk>
- * @license    As long as you reference the author, you can do what you want with this code
- * @version    1
- */
 
 class User {
-  
-    private $DB         = $GLOBALS['DB'];
-    private $TBL_USERS  = $GLOBALS['TBL_USERS'];
-    private $PRIVATEKEY = $GLOBALS['PRIVATEKEY'];
-  
-	function getUser($query,$condition="id") {
-
-		$user_datapoints = $DB->row(array("table" => $TBL_USERS, "condition" => "$condition = $query"));
-		unset($user_datapoints['password']);
-        unset($user_datapoints['access']);
-        unset($user_datapoints['email']);
-      
-        foreach($user_datapoints as $field => $value) {
-          $this->$field = $value;
-        }
-
-		return $user_datapoints;
-	}
 
 	function register($data) {
 		$data['password'] = hash_hmac("sha512",$data['password'],$PRIVATEKEY);
