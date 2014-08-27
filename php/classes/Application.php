@@ -1,37 +1,38 @@
 <?php
     class Application {
-      
-        // Global config
         //Configuration switches
-        public $LESS                 ;
-        public $PUBLISHER            ;
-        public $PROJECTNAME          ;
-        public $PAGETITLE            ;
-        public $DESCRIPTION          ;
-        public $KEYWORDS             ;
-        // Generated strings  ;
-        public $COPYRIGHT            ;
-        // Miscellaneous  ;
-        public $SCHEMAROOT           ;
-        public $GOOGLEANALYTICSCODE  ;
-        public $GOOGLEANALYTICSURL   ;
-        // Security ;
-        public $PRIVATEKEY           ;
-        // Paths  ;
-        public $BASEDIR              ;
-        public $CLASSES              ;
-        public $TEMPLATES            ;
-        public $CONTROLLERS          ;
-        // URLs ;
-        public $BASEURL              ;
-        public $ASSETURL             ;
-        public $CSSURL               ;
-        public $JSURL                ;
-        public $IMGURL               ;
-        public $LOGO                 ;
-        public $LOGOSOCIAL           ;
-        public $LOGOLINK             ;
-      
+        public $LESS;
+        //Arbitraty global strings
+        public $PUBLISHER;
+        public $PROJECTNAME;
+        public $DESCRIPTION;
+        public $KEYWORDS;
+        public $PAGETITLE;
+        // Generated strings;
+        public $COPYRIGHT;
+        // Miscellaneous;
+        public $SCHEMAROOT;
+        public $GOOGLEANALYTICSCODE;
+        public $GOOGLEANALYTICSURL;
+        // Security;
+        public $PRIVATEKEY;
+        // SQL Database;
+        public $DB_HOST;
+        public $DB_NAME;
+        public $DB_USR;
+        public $DB_PWD;
+        // Paths;
+        public $BASEDIR;
+        public $CLASSES;
+        public $TEMPLATES;
+        public $CONTROLLERS;
+        // URLs;
+        public $BASEURL;
+        public $ASSETURL;
+        public $CSSURL;
+        public $JSURL;
+        public $IMGURL;
+        public $LOGO;
         // Render variables
         private $headers;
         private $footers;
@@ -42,19 +43,6 @@
             foreach($vars as $prop => $val) {
               $this->$prop = $val;
             }
-          
-            $this->COPYRIGHT    = $this->PUBLISHER." &copy; ".date("Y");
-            $this->BASEDIR      = $_SERVER["DOCUMENT_ROOT"]."/politicalrecruits";
-            $this->CLASSES      = "$this->BASEDIR/php/classes";
-            $this->TEMPLATES    = "$this->BASEDIR/php/templates";
-            $this->CONTROLLERS  = "$this->BASEDIR/php/controllers";
-            $this->ASSETURL     = $this->BASEURL;
-            $this->CSSURL       = $this->ASSETURL."/css";
-            $this->JSURL        = $this->ASSETURL."/js";
-            $this->IMGURL       = $this->ASSETURL."/img";
-            $this->LOGO         = $this->IMGURL."/logo.png";
-            $this->LOGOSOCIAL   = $this->LOGO;
-            $this->LOGOLINK     = $this->BASEURL;
           
             // Init render
             $this->headers = array();
@@ -76,6 +64,14 @@
             foreach($this->footers as $footer) {
                 include $footer;
             }
+        }
+      
+        public function getPDOConnection() {
+            // Thanks to the static-specifier, this variable will be initialized only once.
+            $this->PDO = new PDO("mysql:host=$this->DB_HOST;charset=utf8;dbname=$this->DB_NAME", $this->DB_USR, $this->DB_PWD);
+            $this->PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->PDO->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+            return $this->PDO;
         }
 
         public function addHeader($file) {
