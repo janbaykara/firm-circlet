@@ -13,12 +13,15 @@ abstract class DatabaseObject {
   The ability to amend/update existing occurrences.
   The ability to delete existing occurrences.
   */
-
-  function set($fieldarray) {
-    // INSERT INTO author (first_name, last_name) VALUES ('Jane', 'Austen');
+  
+  public $PDO;
+  
+  function __construct(PDO $db) {
+    $this->PDO = $db;
   }
   
-  function get($conditions) {
+  /*
+  function get() {
     // SELECT author.id, author.first_name, author.last_name
     // FROM `author`
     // WHERE author.id = 1
@@ -33,4 +36,8 @@ abstract class DatabaseObject {
     // ...
   }
 
+  function set($fieldarray) {
+    // INSERT INTO author (first_name, last_name) VALUES ('Jane', 'Austen');
+  }
+  */
 }

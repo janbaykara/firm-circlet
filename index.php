@@ -13,10 +13,10 @@ ob_start();
 -->
 <div class="wrapper">
 <?
-  $i = 1;
-  while($i < 60) {
-    echo "Peter piper ... $i <br>";
-    $i++;
+  $user = new User($app->getPDOConnection());
+
+  foreach($user->PDO->query('SELECT * FROM users')->fetchAll(PDO::FETCH_ASSOC) as $row) {
+    echo $row['name'];
   }
 ?>
 </div>
@@ -25,6 +25,8 @@ ob_start();
 -->
 <?
 $view->setContent(ob_get_clean());
+$app->addHeader("header.php");
+$app->addFooter("footer.php");
 $app->setView($view);
 $app->render();
 ?>
