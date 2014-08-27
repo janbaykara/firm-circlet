@@ -1,6 +1,6 @@
 <?php
 
-class Job {
+class Job extends DatabaseObject {
 
   function create() {
     /* 

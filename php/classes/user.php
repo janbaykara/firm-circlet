@@ -25,7 +25,7 @@ class User extends DatabaseObject {
 		if (!isset($details['name'])) {
             return false;
 		} elseif ($details['password'] == $password && $email = $details['email']) {
-			$_SESSION['logged'] = true;
+			$_SESSION['logged'] = true; #Replace with Session class
             $_SESSION['access'] = $details['access'];
 			$_SESSION['user_id'] = $details['id'];
             $_SESSION['userdata'] = $details;
@@ -38,7 +38,7 @@ class User extends DatabaseObject {
 	}
   
     function logout() {
-      session_destroy();
+      session_destroy(); #Replace with Session class
       return;
     }
 }
