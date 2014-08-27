@@ -74,12 +74,12 @@ Options -MultiViews
 # Customize what Apache returns to the client in case of an error.
 # http://httpd.apache.org/docs/current/mod/core.html#errordocument
 
-ErrorDocument 400 /politicalrecruits/dev/errors.php
-ErrorDocument 401 /politicalrecruits/dev/errors.php
-ErrorDocument 402 /politicalrecruits/dev/errors.php
-ErrorDocument 403 /politicalrecruits/dev/errors.php
-ErrorDocument 404 /politicalrecruits/dev/errors.php
-ErrorDocument 500 /politicalrecruits/dev/errors.php
+ErrorDocument 400 /politicalrecruits/errors.php
+ErrorDocument 401 /politicalrecruits/errors.php
+ErrorDocument 402 /politicalrecruits/errors.php
+ErrorDocument 403 /politicalrecruits/errors.php
+ErrorDocument 404 /politicalrecruits/errors.php
+ErrorDocument 500 /politicalrecruits/errors.php
 
 
 # ##############################################################################

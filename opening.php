@@ -1,14 +1,14 @@
 <?php
 /* ===============
 *
-*  Homepage 1.0.0
+*  Job page 1.0.0
 *
 * ============= */
 require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/php/config.php");
 $view = new view("Political Recruits");
 ob_start(); 
 ?>
-<!--
+<!-- 
 *************** PAGE CONTENT START ***************
 -->
 <div class="wrapper">

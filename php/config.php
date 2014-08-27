@@ -1,17 +1,16 @@
 <?
-
 $config = [
   "BASEDIR"             => $_SERVER["DOCUMENT_ROOT"]."/politicalrecruits",
-  "LESS" => true,
-  "PUBLISHER" => "Political Recruits Ltd.",
-  "PROJECTNAME" => "Political Recruits",
-  "DESCRIPTION" => "...",
-  "KEYWORDS" => "...",
-  "SCHEMAROOT" => "Website",
+  "LESS"                => true,
+  "PUBLISHER"           => "Political Recruits Ltd.",
+  "PROJECTNAME"         => "Political Recruits",
+  "DESCRIPTION"         => "...",
+  "KEYWORDS"            => "...",
+  "SCHEMAROOT"          => "Website",
   "GOOGLEANALYTICSCODE" => "UA-47411407-1",
-  "GOOGLEANALYTICSURL" => "baykara.co.uk",
-  "PRIVATEKEY" => "deathtothewestonlykiddingthat'dbehilarious",
-  "BASEURL" => "http://localhost:8888/politicalrecruits",
+  "GOOGLEANALYTICSURL"  => "baykara.co.uk",
+  "PRIVATEKEY"          => "deathtothewestonlykiddingthat'dbehilarious",
+  "BASEURL"             => "http://localhost:8888/politicalrecruits",
 ];
 
 require($config['BASEDIR']."/php/functions.php");

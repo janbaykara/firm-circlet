@@ -1,6 +1,6 @@
 <?php
 
-class User {
+class User extends DatabaseObject {
 
 	function register($data) {
 		$data['password'] = hash_hmac("sha512",$data['password'],$PRIVATEKEY);

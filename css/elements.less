@@ -1,5 +1,5 @@
-/* ---------- ==========================================
-  PAGE ELEMENTS - Colour, embellishment, styling  */
+// ---------- ==========================================
+//  PAGE ELEMENTS - Colour, embellishment, styling  */
 
 // Colour scheme      
 @darkgrey:      #363F4D;
@@ -21,7 +21,7 @@
 @clinkactive:   lighten(@clink,20%);
 @clinkvisited:  @clink;
 
-/* ================== GLOBAL MODULAR */
+/* ================== GLOBAL ATOMIC */
 
 .selection-style(@cprime, @cbg);
 
@@ -40,22 +40,26 @@ a {
   &:visited   { color: @clinkvisited; }
 }
 
-/* =================== GLOBAL elements */
-
-.copyright {
-  color: #BBB;
-  font-size: 18px;
-}
-
-#document-foot {
-  img { width: 150px; }
-  text-align: center;
+input, textarea {
+  font-size: 24px;
+  color: @brandred;
+  border: none;
+  border-bottom: 3px solid #DBDBDB;
+  outline: none;
   
-  &:before {
-    content: " ";
-    padding-top: 30px;
-    border-top: 2px solid #EEE;
-    display: block;
+  &:focus {
+    border-color: @brandred;
+    @placeholder {
+      position: absolute;
+      color: green;
+      margin-top: 20px;
+    }
+  }
+  
+  &.search {
+    background: url('../img/img_icon-search.svg') no-repeat left 50%;
+    padding-left: 50px;
+    height: 50px;
   }
 }
 

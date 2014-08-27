@@ -1,6 +1,6 @@
 <?php
     class View {
-        private $title;
+        public $title;
         private $content;
 
         public function __construct($title) {

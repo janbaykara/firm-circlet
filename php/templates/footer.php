@@ -4,11 +4,13 @@ echo <<<HTML
     BEGIN SCAFFOLD_FOOT
     ================ -->
 
-    <div class='clearfix'></div>
+    <div id="document-close"></div>
     
     <footer id="document-foot">
-      <img id="logo" src="$this->LOGO"/>
-      <div class=copyright>$this->COPYRIGHT</div>
+      <div class='inner'>
+        <img id="logo" src="$this->LOGO"/>
+        <div class=copyright>$this->COPYRIGHT</div>
+      </div>
     </footer>
     
     <!-- Footer JS -->

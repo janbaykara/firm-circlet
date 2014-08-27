@@ -83,9 +83,19 @@ echo <<<HTML
 <body>
 
     <header id="document-head">
-      <a href="$this->LOGOLINK" id="logo">
-        <img src="$this->LOGO" />
-      </a>
+      <div class="row">
+        <a class="col2 logo" id="header-logo" href="$this->LOGOLINK">
+          <img src="$this->IMGURL/img_logo.svg" />
+        </a>
+        <div id="header-search" class="col9">
+          <div class="inner search">
+            <input type='search' class='search' placeholder="Find an opening..." />
+          </div>
+        </div>
+        <div class='col1 ontheright' id="header-nav">
+          <a href="$this->BASEURL/about">about</a>
+          <a href="$this->BASEURL/login">login</a>
+        </div>
     </header>
     
     <!-- ===============

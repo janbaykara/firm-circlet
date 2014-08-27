@@ -88,6 +88,7 @@
 
         public function setView(View $view) {
             $this->view = $view;
+            $this->PAGETITLE = $this->view->title;
         }
     }
 ?>

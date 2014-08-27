@@ -1,7 +1,7 @@
 <?php
 /* ===============
 *
-*  Homepage 1.0.0
+*  Settings Page 1.0.0
 *
 * ============= */
 require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/php/config.php");
