@@ -89,7 +89,7 @@ foreach($headers as $head) {
       <div class="header row" id="<?=$head ?>">
         <div class="inner">
           <a class="col2 logo" id="header-logo" href="<?=$this->BASEURL?>">
-            <img src="<?=$this->IMGURL?>/img_logo.svg" />
+            <img src="<?=$this->LOGO?>"/>
           </a>
           <div id="header-search" class="col8">
             <div class="inner search">

@@ -5,7 +5,7 @@
 *
 * ============= */
 require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/php/config.php");
-$view = new view("Political Recruits");
+$view = new view("Political Recruits",$EXTERNAL);
 ob_start(); 
 ?>
 <!--
@@ -25,8 +25,8 @@ ob_start();
 -->
 <?
 $view->setContent(ob_get_clean());
-$app->addHeader("header.php");
-$app->addFooter("footer.php");
+$view->addHeader("$app->TEMPLATES/header.php");
+$view->addFooter("$app->TEMPLATES/footer.php");
 $app->setView($view);
-$app->render();
+$app->view->render();
 ?>

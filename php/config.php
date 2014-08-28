@@ -1,24 +1,28 @@
 <?
-$config = [
+$INTERNAL = [
   // System config
-  "LESS"                => true,
+  "PRIVATEKEY"          => "deathtothewestonlykiddingthat'dbehilarious",
   // Database
   "DB_HOST"             => "localhost",
   "DB_NAME"             => "politicalrecruits",
   "DB_USR"              => "root",
   "DB_PWD"              => "macos100",
+  // Internal paths
+  "BASEDIR"             => ($BASEDIR="$_SERVER[DOCUMENT_ROOT]/politicalrecruits"),
+  "CLASSES"             => "$BASEDIR/php/classes",
+  "TEMPLATES"           => "$BASEDIR/php/templates",
+  "CONTROLLERS"         => "$BASEDIR/php/controllers"
+];
+
+$EXTERNAL = [
+  "LESS"                => true,
   // External paths
   "BASEURL"             => ($BASEURL="http://localhost:8888/politicalrecruits"),
   "ASSETURL"            => ($ASSETURL="$BASEURL/ui"),
   "CSSURL"              => "$ASSETURL/css",
   "JSURL"               => "$ASSETURL/js",
   "IMGURL"              => ($IMGURL="$ASSETURL/img"),
-  "LOGO"                => "$IMGURL/logo.png",
-  // Internal paths
-  "BASEDIR"             => ($BASEDIR="$_SERVER[DOCUMENT_ROOT]/politicalrecruits"),
-  "CLASSES"             => "$BASEDIR/php/classes",
-  "TEMPLATES"           => "$BASEDIR/php/templates",
-  "CONTROLLERS"         => "$BASEDIR/php/controllers",
+  "LOGO"                => "$IMGURL/img_logo.svg",
   // Project strings
   "PROJECTNAME"         => "Political Recruits",
   "PUBLISHER"           => ($PUBLISHER="Political Recruits, Ltd."),
@@ -28,17 +32,10 @@ $config = [
   // Misc defs
   "SCHEMAROOT"          => "Website",
   "GOOGLEANALYTICSCODE" => "UA-47411407-1",
-  "GOOGLEANALYTICSURL"  => "baykara.co.uk",
-  "PRIVATEKEY"          => "deathtothewestonlykiddingthat'dbehilarious",
+  "GOOGLEANALYTICSURL"  => "baykara.co.uk"
 ];
 
-$array = [
-  "Key1"=>($ref="Value1"),
-  "Key2"=>&$ref,
-  "Key1"=>&$ref
-];
+require("$INTERNAL[BASEDIR]/php/functions.php");
 
-require($config['BASEDIR']."/php/functions.php");
-
-$app = new Application($config);
+$app = new Application($INTERNAL);
 ?>

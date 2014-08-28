@@ -1,8 +1,8 @@
 <?php
 
 function __autoload($class_name) {
-    global $config;
-    include "$config[BASEDIR]/php/classes/$class_name.php";
+    global $INTERNAL;
+    include "$INTERNAL[BASEDIR]/php/classes/$class_name.php";
 }
 
 function timeOfDay() {

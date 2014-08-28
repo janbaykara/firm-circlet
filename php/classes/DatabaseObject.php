@@ -14,6 +14,8 @@ abstract class DatabaseObject {
   The ability to delete existing occurrences.
   */
   
+  // http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers
+  
   public $PDO;
   
   function __construct(PDO $db) {
