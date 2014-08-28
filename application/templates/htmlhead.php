@@ -1,7 +1,4 @@
-<?php
-ob_start();
-
-?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" itemscope itemtype="http://schema.org/<?=$this->SCHEMAROOT?>" lang="en-gb"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" itemscope itemtype="http://schema.org/<?=$this->SCHEMAROOT?>" lang="en-gb"> <![endif]-->
@@ -59,8 +56,8 @@ ob_start();
         <meta property="og:type" content="website" />
         <meta property="og:image" content="<?=$this->LOGO?>" />
       
-<? if($this->LESS == true) { /* **************************************** */ ?>
-  
+        <? if($this->LESS == true) { /* **************************************** */ ?>
+
         <!-- Stylesheets -->
             <link href='<?=$this->CSSURL?>/master.less' rel='stylesheet/less' type='text/css'> 
 
@@ -68,46 +65,15 @@ ob_start();
             <script>less = { env: 'development' };</script>
             <script src='//cdn.jsdelivr.net/less/1.7.1/less.min.js'></script>
   
-<? } else { /* ********************************************************* */  ?>
+        <? } else { /* ********************************************************* */  ?>
   
         <!-- Stylesheets -->
             <link  href='<?=$this->CSSURL?>/master.css' rel='stylesheet' type='text/css'>
 
         <!-- Dependencies -->
   
-<? }  /* ***************************************************************** */  ?>  
+        <? }  /* ***************************************************************** */  ?>  
   
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
-<body>
-
-    <header id="document-head">
-<?
-$headers = ['head-constant','head-dynamic'];
-foreach($headers as $head) {
-?>
-      <div class="header row" id="<?=$head ?>">
-        <div class="inner">
-          <a class="col2 logo" id="header-logo" href="<?=$this->BASEURL?>">
-            <img src="<?=$this->LOGO?>"/>
-          </a>
-          <div id="header-search" class="col8">
-            <div class="inner search">
-              <input type='search' class='search' placeholder="Find an opening..." />
-            </div>
-          </div>
-          <div class='col2 ontheright' id="header-nav">
-            <a href="<?=$this->BASEURL?>/about">about</a>
-            <a href="<?=$this->BASEURL?>/login">login</a>
-          </div>
-        </div>
-      </div>
-<? } ?>
-    </header>
-    
-    <!-- ===============
-    END SCAFFOLD_HEAD
-    ================ -->
-<?
-echo ob_get_clean();
-?>
+<? echo ob_get_clean(); ?>

@@ -1,15 +1,14 @@
 <?php
+require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/application/config.php");
 /* ===============
 *
 *  Homepage 1.0.0
 *
 * ============= */
-require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/php/config.php");
-$view = new view("Political Recruits",$EXTERNAL);
-ob_start(); 
-?>
-<!--
-*************** PAGE CONTENT START ***************
+$view = new view("Political Recruits",$PUBLIC);
+ob_start(); ?><!--
+******************************************************************************************************************
+*************** PAGE CONTENT START *******************************************************************************
 -->
 <div class="wrapper">
 <?
@@ -21,12 +20,14 @@ ob_start();
 ?>
 </div>
 <!--
-**************** PAGE CONTENT END ****************
--->
-<?
+**************** PAGE CONTENT END ********************************************************************************
+******************************************************************************************************************
+--><?// Build view
+$view->addHeader($app->TEMPLATES, "htmlhead");
+$view->addHeader($app->TEMPLATES, "bodyheader");
 $view->setContent(ob_get_clean());
-$view->addHeader("$app->TEMPLATES/header.php");
-$view->addFooter("$app->TEMPLATES/footer.php");
+$view->addFooter($app->TEMPLATES, "bodyfooter");
+// Deploy view
 $app->setView($view);
 $app->view->render();
 ?>

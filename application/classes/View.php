@@ -25,8 +25,8 @@
         
         // Class vars
         private $content;
-        private $headers;
-        private $footers;
+        public $headers;
+        public $footers;
 
         public function __construct($title,$vars) {
             foreach($vars as $prop => $val) {
@@ -39,16 +39,16 @@
             // clean up here
         }
       
-        public function addHeader($file) {
-            $this->headers[] = $file;
+        public function addHeader($location,$file) {
+            $this->headers[$file] = "$location/$file.php";
+        }
+
+        public function addFooter($location,$file) {
+            $this->footers[$file] = "$location/$file.php";
         }
 
         public function setContent($content) {
             $this->content = $content;
-        }
-
-        public function addFooter($file) {
-            $this->footers[] = $file;
         }
       
         public function render() {

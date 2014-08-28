@@ -1,5 +1,5 @@
 <?
-$INTERNAL = [
+$APPLICATION = [
   // System config
   "PRIVATEKEY"          => "deathtothewestonlykiddingthat'dbehilarious",
   // Database
@@ -9,16 +9,16 @@ $INTERNAL = [
   "DB_PWD"              => "macos100",
   // Internal paths
   "BASEDIR"             => ($BASEDIR="$_SERVER[DOCUMENT_ROOT]/politicalrecruits"),
-  "CLASSES"             => "$BASEDIR/php/classes",
-  "TEMPLATES"           => "$BASEDIR/php/templates",
-  "CONTROLLERS"         => "$BASEDIR/php/controllers"
+  "CLASSES"             => "$BASEDIR/application/classes",
+  "TEMPLATES"           => "$BASEDIR/application/templates",
+  "CONTROLLERS"         => "$BASEDIR/application/controllers"
 ];
 
-$EXTERNAL = [
+$PUBLIC = [
   "LESS"                => true,
   // External paths
   "BASEURL"             => ($BASEURL="http://localhost:8888/politicalrecruits"),
-  "ASSETURL"            => ($ASSETURL="$BASEURL/ui"),
+  "ASSETURL"            => ($ASSETURL="$BASEURL/public"),
   "CSSURL"              => "$ASSETURL/css",
   "JSURL"               => "$ASSETURL/js",
   "IMGURL"              => ($IMGURL="$ASSETURL/img"),
@@ -35,7 +35,7 @@ $EXTERNAL = [
   "GOOGLEANALYTICSURL"  => "baykara.co.uk"
 ];
 
-require("$INTERNAL[BASEDIR]/php/functions.php");
+require("$APPLICATION[BASEDIR]/application/functions.php");
 
-$app = new Application($INTERNAL);
+$app = new Application($APPLICATION);
 ?>
