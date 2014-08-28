@@ -3,7 +3,7 @@
 class User extends DatabaseObject {
 
 	function register($data) {
-		$data['password'] = hash_hmac("sha512",$data['password'],$PRIVATEKEY);
+		$data['password'] = password_hash($data['password'], PASSWORD_BCRYPT, ['cost'=>10]);
 		unset($data['confirm']);
 		unset($data['submit']);
 
@@ -18,13 +18,13 @@ class User extends DatabaseObject {
 	}
 
 	function login($email,$password) {
-		$password = hash_hmac("sha512",$password,$PRIVATEKEY);
+		$hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
 
 		$details = $DB->row(array("table" => $TBL_USERS, "condition" => "email = '$email'"));
       
 		if (!isset($details['name'])) {
             return false;
-		} elseif ($details['password'] == $password && $email = $details['email']) {
+		} elseif (password_verify($password, $hash) && $email = $details['email']) {
 			$_SESSION['logged'] = true; #Replace with Session class
             $_SESSION['access'] = $details['access'];
 			$_SESSION['user_id'] = $details['id'];
