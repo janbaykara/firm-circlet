@@ -12,11 +12,15 @@ ob_start(); ?><!--
 -->
 <div class="wrapper">
 <?
-  $user = new User($app->getDatabaseConnection());
+  $user = new User($DATABASE);
 
-  foreach($user->PDO->query('SELECT * FROM users')->fetchAll(PDO::FETCH_ASSOC) as $row) {
-    echo $row['name'];
-  }
+  $user->register([
+    "username"    => "JanBay",
+    "type"        => "1",
+    "email"       => "janbaykara@gmail.com",
+    "password"    => "macos100"
+  ]);
+  
 ?>
 </div>
 <!--

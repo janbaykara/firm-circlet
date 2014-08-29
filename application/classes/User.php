@@ -7,13 +7,14 @@ class User extends DatabaseObject {
 		unset($data['confirm']);
 		unset($data['submit']);
 
-		$details = $DB->row(array("table" => $TBL_USERS, "condition" => "email = '$data[email]'"));
+		//$details = $DB->row(array("table" => $TBL_USERS, "condition" => "email = '$data[email]'"));
       
-		if (isset($details['name'])) {
-            return false;
+        $q = $this->PDO->query("DESCRIBE users");
+      
+		if ($this->PDO->query("SELECT email FROM users WHERE email = '$data[email]'")->fetchAll(PDO::FETCH_ASSOC)) {
+          echo "Account already exists.";
 		} else {
-          $DB->insert("users", $data);
-		  return true;
+          echo "Account successfully registered!";
         }
 	}
 

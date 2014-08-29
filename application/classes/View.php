@@ -11,10 +11,6 @@
               $this->$key = $val;
             }
         }
-
-        public function __destruct() {
-            // clean up here
-        }
       
         public function addHeader($location,$file) {
             $this->headers[$file] = "$location/$file.php";

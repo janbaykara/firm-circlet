@@ -1,45 +1,31 @@
 <?php
 
 abstract class DatabaseObject {
-
   # Consider using PROPEL
-  # http://propelorm.org/documentation/03-basic-crud.html
-  
-  /*
-  The ability to browse through all or selected occurrences (rows).
-  The ability to define selection criteria in order to retrieve selected occurrences.
-  The ability to create/insert new occurrences.
-  The ability to read/enquire the details of existing occurrences.
-  The ability to amend/update existing occurrences.
-  The ability to delete existing occurrences.
-  */
-  
   // http://wiki.hashphp.org/PDO_Tutorial_for_MySQL_Developers
   
   public $PDO;
   
-  function __construct(PDO $db) {
-    $this->PDO = $db;
+  function __construct($dbconfig) {
+    foreach($dbconfig as $k => $v) {
+      $this->$k = $v;
+    }
+    $this->getPDOConnection();
   }
-  
-  /*
-  function get() {
-    // SELECT author.id, author.first_name, author.last_name
-    // FROM `author`
-    // WHERE author.id = 1
-    // LIMIT 1;
+      
+  protected function getPDOConnection() {
+    // Thanks to the static-specifier, this variable will be initialized only once.
+    try {
+      $this->PDO = new PDO(
+        "mysql:host=$this->DB_HOST;charset=utf8;dbname=$this->DB_NAME",
+        $this->DB_USR,
+        $this->DB_PWD,
+        [ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+          PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ]
+      );
+      return $this->PDO;
+    } catch (PDOException $e) {
+        die('There was an error connecting to the database: ' . $e->getMessage()); //@@@ERRORCODE
+    }
   }
-  
-  function update($fieldarray) {
-    // ...
-  }
-  
-  function delete($fieldarray) {
-    // ...
-  }
-
-  function set($fieldarray) {
-    // INSERT INTO author (first_name, last_name) VALUES ('Jane', 'Austen');
-  }
-  */
 }

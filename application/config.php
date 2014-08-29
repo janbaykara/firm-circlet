@@ -1,15 +1,18 @@
 <?
 $APPLICATION = [
-  // Database
-  "DB_HOST"             => "localhost",
-  "DB_NAME"             => "politicalrecruits",
-  "DB_USR"              => "root",
-  "DB_PWD"              => "macos100",
   // Internal paths
   "BASEDIR"             => ($BASEDIR="$_SERVER[DOCUMENT_ROOT]/politicalrecruits"),
   "CLASSES"             => "$BASEDIR/application/classes",
   "TEMPLATES"           => "$BASEDIR/application/templates",
   "CONTROLLERS"         => "$BASEDIR/application/controllers"
+];
+
+$DATABASE = [
+  // Database
+  "DB_HOST"             => "localhost",
+  "DB_NAME"             => "politicalrecruits",
+  "DB_USR"              => "root",
+  "DB_PWD"              => "macos100"
 ];
 
 $PUBLIC = [
