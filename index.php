@@ -12,16 +12,23 @@ ob_start(); ?><!--
 -->
 <div class="wrapper">
 <?
+  /*
   $user = new User($DATABASE);
-
+  
   $user->register([
     "username"    => "JanBay",
     "type"        => "1",
     "email"       => "janbaykara@gmail.com",
     "password"    => "macos100"
   ]);
-  
+  */
 ?>
+  <form method="POST" action="<?=$view->controller('login')?>">
+    <input type="email" name="email" placeholder="email@address.com" />
+    <input type="password" name="password" />
+    <input type="submit" value="login" />
+  </form>
+  
 </div>
 <!--
 **************** PAGE CONTENT END ********************************************************************************

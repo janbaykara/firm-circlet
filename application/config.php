@@ -3,8 +3,7 @@ $APPLICATION = [
   // Internal paths
   "BASEDIR"             => ($BASEDIR="$_SERVER[DOCUMENT_ROOT]/politicalrecruits"),
   "CLASSES"             => "$BASEDIR/application/classes",
-  "TEMPLATES"           => "$BASEDIR/application/templates",
-  "CONTROLLERS"         => "$BASEDIR/application/controllers"
+  "TEMPLATES"           => "$BASEDIR/application/templates"
 ];
 
 $DATABASE = [
@@ -33,7 +32,9 @@ $PUBLIC = [
   // Misc defs
   "SCHEMAROOT"          => "Website",
   "GOOGLEANALYTICSCODE" => "UA-47411407-1",
-  "GOOGLEANALYTICSURL"  => "baykara.co.uk"
+  "GOOGLEANALYTICSURL"  => "baykara.co.uk",
+  // Routes
+  "CONTROLLERS"         => "$BASEURL/application/controllers"
 ];
 
 function __autoload($class_name) {

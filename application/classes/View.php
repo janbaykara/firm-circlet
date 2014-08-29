@@ -12,6 +12,10 @@
             }
         }
       
+        public function controller($file) {
+          return $this->CONTROLLERS."/$file.php";
+        }
+      
         public function addHeader($location,$file) {
             $this->headers[$file] = "$location/$file.php";
         }

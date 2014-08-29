@@ -19,23 +19,29 @@ class User extends DatabaseObject {
 	}
 
 	function login($email,$password) {
-		$hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
-
-		$details = $DB->row(array("table" => $TBL_USERS, "condition" => "email = '$email'"));
+	
+      $hash = password_hash($password, PASSWORD_BCRYPT, ['cost'=>10]);
       
-		if (!isset($details['name'])) {
-            return false;
-		} elseif (password_verify($password, $hash) && $email = $details['email']) {
-			$_SESSION['logged'] = true; #Replace with Session class
-            $_SESSION['access'] = $details['access'];
-			$_SESSION['user_id'] = $details['id'];
-            $_SESSION['userdata'] = $details;
-			return true;
-            echo "Success: $details[password] == $password $email = $details[email]";
-		} else {
-			return false;
-            echo "Wrong pw/em: $details[password] == $password $email = $details[email]";
-		}
+      $details = $this->PDO->query("SELECT * FROM users WHERE email = '$email'")->fetchAll(PDO::FETCH_ASSOC);
+      $thisRecord = $details[0];
+
+      if ($details === null) {
+          //return false;
+          header('HTTP/1.0 401 Unauthorized');
+          //echo "No such user";
+      } elseif (password_verify($thisRecord['password'], $hash) && $email = $thisRecord['email']) {
+          $_SESSION['logged'] = true; #Replace with Session class
+          $_SESSION['user_id'] = $thisRecord['id'];
+          $_SESSION['userdata'] = $thisRecord;
+          //return true;
+          //echo "Success";
+          header('HTTP/1.0 202 Accepted');
+          //header("Location: http://www.yahoo.com?t=" . $test);
+      } else {
+          //echo "Wrong pw/em";
+          //return false;
+          header('HTTP/1.0 401 Unauthorized');
+      }
 	}
   
     function logout() {
