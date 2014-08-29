@@ -1,7 +1,5 @@
 <?
 $APPLICATION = [
-  // System config
-  "PRIVATEKEY"          => "deathtothewestonlykiddingthat'dbehilarious",
   // Database
   "DB_HOST"             => "localhost",
   "DB_NAME"             => "politicalrecruits",
@@ -35,7 +33,10 @@ $PUBLIC = [
   "GOOGLEANALYTICSURL"  => "baykara.co.uk"
 ];
 
-require("$APPLICATION[BASEDIR]/application/functions.php");
+function __autoload($class_name) {
+    global $APPLICATION;
+    include "$APPLICATION[CLASSES]/$class_name.php";
+}
 
 $app = new Application($APPLICATION);
 ?>

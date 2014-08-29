@@ -5,14 +5,14 @@ require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/application/config.php");
 *  Homepage 1.0.0
 *
 * ============= */
-$view = new view("Political Recruits",$PUBLIC);
+$view = new view($PUBLIC,"Political Recruits");
 ob_start(); ?><!--
 ******************************************************************************************************************
 *************** PAGE CONTENT START *******************************************************************************
 -->
 <div class="wrapper">
 <?
-  $user = new User($app->getPDOConnection());
+  $user = new User($app->getDatabaseConnection());
 
   foreach($user->PDO->query('SELECT * FROM users')->fetchAll(PDO::FETCH_ASSOC) as $row) {
     echo $row['name'];

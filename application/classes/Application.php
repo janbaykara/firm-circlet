@@ -1,23 +1,16 @@
 <?php
     class Application {
-        // Security;
-        public $PRIVATEKEY;
         // SQL Database;
-        public $DB_HOST;
-        public $DB_NAME;
-        public $DB_USR;
-        public $DB_PWD;
-        // Paths;
-        public $BASEDIR;
-        public $CLASSES;
-        public $TEMPLATES;
-        public $CONTROLLERS;
+        private $DB_HOST;
+        private $DB_NAME;
+        private $DB_USR;
+        private $DB_PWD;
         // Render variables
         public $view;
 
-        public function __construct($vars) {
+        public function __construct($APPLICATION_VARS) {
             // Init global vars
-            foreach($vars as $prop => $val) {
+            foreach($APPLICATION_VARS as $prop => $val) {
               $this->$prop = $val;
             }
           
@@ -31,7 +24,7 @@
             // clean up here
         }
       
-        public function getPDOConnection() {
+        public function getDatabaseConnection() {
             // Thanks to the static-specifier, this variable will be initialized only once.
             $this->PDO = new PDO("mysql:host=$this->DB_HOST;charset=utf8;dbname=$this->DB_NAME", $this->DB_USR, $this->DB_PWD);
             $this->PDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
