@@ -7,8 +7,8 @@
       ?>
       <div class="header row" id="<?=$head ?>">
         <div class="inner">
-          <a class="col2 logo" id="header-logo" href="<?=$this->BASEURL?>">
-            <img src="<?=$this->LOGO?>"/>
+          <a class="col2 logo" id="header-logo" href="<?=$this->URL['ROOT']?>">
+            <img src="<?=$this->URL['LOGO']?>"/>
           </a>
           <div id="header-search" class="col8">
             <div class="inner search">
@@ -16,8 +16,8 @@
             </div>
           </div>
           <div class='col2 ontheright' id="header-nav">
-            <a href="<?=$this->BASEURL?>/about">about</a>
-            <a href="<?=$this->BASEURL?>/login">login</a>
+            <a href="<?=$this->URL['ROOT']?>/about">about</a>
+            <a href="<?=$this->URL['ROOT']?>/login">login</a>
           </div>
         </div>
       </div>

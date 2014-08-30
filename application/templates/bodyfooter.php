@@ -7,13 +7,13 @@
     
     <footer id="document-foot">
       <div class='inner'>
-        <img id="logo" src="<?=$this->LOGO?>"/>
-        <div class=copyright><?=$this->COPYRIGHT?></div>
+        <img id="logo" src="<?=$this->URL['LOGO']?>"/>
+        <div class=copyright><?=$this->STR['COPYRIGHT']?></div>
       </div>
     </footer>
     
     <!-- Footer JS -->
-    <script src="<?=$this->JSURL?>/main.js"></script>
+    <script src="<?=$this->URL['JS']?>/main.js"></script>
     <!--
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

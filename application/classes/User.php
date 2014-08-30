@@ -28,17 +28,17 @@ class User extends DatabaseObject {
       if ($details === null) {
           //return false;
           header('HTTP/1.0 401 Unauthorized');
-          //echo "No such user";
+          echo "No such user";
       } elseif (password_verify($thisRecord['password'], $hash) && $email = $thisRecord['email']) {
           $_SESSION['logged'] = true; #Replace with Session class
           $_SESSION['user_id'] = $thisRecord['id'];
           $_SESSION['userdata'] = $thisRecord;
           //return true;
-          //echo "Success";
+          echo "Success";
           header('HTTP/1.0 202 Accepted');
           //header("Location: http://www.yahoo.com?t=" . $test);
       } else {
-          //echo "Wrong pw/em";
+          echo "Wrong pw/em";
           //return false;
           header('HTTP/1.0 401 Unauthorized');
       }

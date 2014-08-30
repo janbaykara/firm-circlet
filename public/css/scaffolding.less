@@ -19,21 +19,34 @@
 }
 
 
-/* Column generation */
+/* Column generation 
+
+xs-col-1
+sm-col-1
+md-col-1
+st-col-1
+lg-col-1
+xl-col-1
+
+*/
 
 .row {
   .clearfix();
 }
-
-.generate-columns(12);
+.col-inner() {
+  .padding-w(10px);
+}
 
 .generate-columns(@n, @i: 1) when (@i =< @n) {
-  .col@{i} {
+  // Remember: mobile-first
+  .col-xs-@{i} {
     width: (@i * 100% / @n) !important;
     float: left;
-    
-    .inner {
-      .padding-w(10px);
+  }
+  .col-xs-@{i} {
+    @media @tablet {
+      width: (@i * 100% / @n) !important;
+      float: left;
     }
   }
   .generate-columns(@n, (@i + 1));
@@ -42,6 +55,8 @@
 .ontheright {
   text-align: right;
 }
+
+.generate-columns(12);
 
 /* Global HTML */
 

@@ -13,7 +13,7 @@
         }
       
         public function controller($file) {
-          return $this->CONTROLLERS."/$file.php";
+          return $this->CONTROLLER."/$file.php";
         }
       
         public function addHeader($location,$file) {

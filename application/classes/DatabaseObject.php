@@ -17,9 +17,9 @@ abstract class DatabaseObject {
     // Thanks to the static-specifier, this variable will be initialized only once.
     try {
       $this->PDO = new PDO(
-        "mysql:host=$this->DB_HOST;charset=utf8;dbname=$this->DB_NAME",
-        $this->DB_USR,
-        $this->DB_PWD,
+        "mysql:host=$this->HOST;charset=utf8;dbname=$this->NAME",
+        $this->USR,
+        $this->PWD,
         [ PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
           PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC ]
       );

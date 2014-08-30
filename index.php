@@ -1,19 +1,18 @@
 <?php
-require($_SERVER["DOCUMENT_ROOT"]."/politicalrecruits/application/config.php");
+require($_SERVER["DOCUMENT_ROOT"]."/application/config.php");
 /* ===============
 *
 *  Homepage 1.0.0
 *
 * ============= */
-$view = new view($PUBLIC,"Political Recruits");
+$view = new view($app->PUBLIC,"Political Recruits");
 ob_start(); ?><!--
 ******************************************************************************************************************
 *************** PAGE CONTENT START *******************************************************************************
 -->
 <div class="wrapper">
 <?
-  /*
-  $user = new User($DATABASE);
+  $user = new User($app->DB);
   
   $user->register([
     "username"    => "JanBay",
@@ -21,23 +20,17 @@ ob_start(); ?><!--
     "email"       => "janbaykara@gmail.com",
     "password"    => "macos100"
   ]);
-  */
 ?>
-  <form method="POST" action="<?=$view->controller('login')?>">
-    <input type="email" name="email" placeholder="email@address.com" />
-    <input type="password" name="password" />
-    <input type="submit" value="login" />
-  </form>
   
 </div>
 <!--
 **************** PAGE CONTENT END ********************************************************************************
 ******************************************************************************************************************
 --><?// Build view
-$view->addHeader($app->TEMPLATES, "htmlhead");
-$view->addHeader($app->TEMPLATES, "bodyheader");
+$view->addHeader($app->DIR['TEMPLATE'], "htmlhead");
+$view->addHeader($app->DIR['TEMPLATE'], "bodyheader");
 $view->setContent(ob_get_clean());
-$view->addFooter($app->TEMPLATES, "bodyfooter");
+$view->addFooter($app->DIR['TEMPLATE'], "bodyfooter");
 // Deploy view
 $app->setView($view);
 $app->view->render();
