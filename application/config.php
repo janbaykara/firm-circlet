@@ -1,21 +1,23 @@
 <?
-$CONFIG = [
-  "DB" => [
-    "HOST"                  => "localhost",
-    "NAME"                  => "politicalrecruits",
-    "USR"                   => "root",
-    "PWD"                   => "macos100"
-  ],  
-  "DIR" => [  
-    "ROOT"                  => ($ROOTDIR="$_SERVER[DOCUMENT_ROOT]"),
-    "LOGIC"                 => ($LOGICDIR="$ROOTDIR/application"),
-    "CLASS"                 => "$LOGICDIR/classes",     // M
-    "TEMPLATE"              => "$LOGICDIR/templates",   // V
-    "CONTROLLER"            => "$LOGICDIR/controllers"  // C
-  ],  
+/* ====================
+
+    FIRM CIRCLET (Config)
+    
+    Find-in-file codes:
+      #     :   Generic to-do
+      @@@   :   View controlled by non-view module
+      >>>   :   Extend/expand functionality here
+      <<<   :   Reduce/contract functionality here
+      !!!   :   Fix broken functionality
+      
+   ====================
+*/
+
+$CONFIG = [ 
   "PUBLIC" => [ 
+    #
     "LESS"                  => true,
-    "SCHEMAROOT"          => "Website",
+    "SCHEMAROOT"            => "Website",
     "STR" => [
       "PROJECTNAME"         => "Political Recruits",
       "PUBLISHER"           => ($PUBLISHER="Political Recruits, Ltd."),
@@ -36,6 +38,19 @@ $CONFIG = [
       "LOGO"                => "$IMGURL/img_logo.svg",
       "CONTROLLER"          => "$ROOTURL/application/controllers"
     ]
+  ],
+  "DIR" => [  
+    "ROOT"                  => ($ROOTDIR="$_SERVER[DOCUMENT_ROOT]"),
+    "LOGIC"                 => ($LOGICDIR="$ROOTDIR/application"),
+    "CLASS"                 => "$LOGICDIR/classes",     // M
+    "TEMPLATE"              => "$LOGICDIR/templates",   // V
+    "CONTROLLER"            => "$LOGICDIR/controllers"  // C
+  ],
+  "DB" => [
+    "HOST"                  => "localhost",
+    "NAME"                  => "politicalrecruits",
+    "USR"                   => "root",
+    "PWD"                   => "macos100"
   ]
 ];
 
